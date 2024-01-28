@@ -67,6 +67,9 @@ public class SignUpActivity extends Activity {
         passwordEditText.setFilters(new InputFilter[] {
                 new PasswordInputFilter()
         });
+        retypeEditText.setFilters(new InputFilter[] {
+                new PasswordInputFilter()
+        });
         selectButton.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
