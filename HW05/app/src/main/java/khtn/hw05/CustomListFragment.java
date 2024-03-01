@@ -16,8 +16,9 @@ import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
-public class CustomListFragment extends Fragment {
+public class CustomListFragment extends Fragment implements FragmentCallbacks{
     // this fragment shows a ListView
+    CustomListViewAdapter adapter;
     MainActivity main;
     Context context = null;
     TextView choosenPeople;
@@ -58,7 +59,7 @@ public class CustomListFragment extends Fragment {
 
         Log.d("StudentList", students.toString());
         // the arguments of the custom adapter are: activityContex, layout-to-be-inflated, labels, icons
-        CustomListViewAdapter adapter = new CustomListViewAdapter(context, R.layout.row_layout, students);
+        adapter = new CustomListViewAdapter(context, R.layout.row_layout, students);
 
         // bind intrinsic ListView to custom adapter
         peopleList = (ListView) fragement_custom_list.findViewById(R.id.peopleList);
@@ -91,7 +92,7 @@ public class CustomListFragment extends Fragment {
                 String className = parts[0];
 
                 // Creating a Student object and adding to the array
-                Student student = new Student(ids[i], fullnames[i], className, gpas[i], avatars[i]);
+                Student student = new Student(ids[i], fullnames[i], className, gpas[i], avatars[i], i);
                 students.add(student);
             }
         }
@@ -99,5 +100,14 @@ public class CustomListFragment extends Fragment {
         Log.d("StudentList", students.toString());
     }
 
+    @Override
+    public void onMsgFromMainToFragment(Student student) {
+        choosenPeople.setText("Mã số: " + ids[student.getPosition()]);
+        main.onMsgFromFragToMain("LIST_FRAG", students.get(student.getPosition()));
+        // Update selected item position
+        adapter.setSelectedItemPosition(student.getPosition());
 
+        // Notify the adapter that the data set has changed
+        adapter.notifyDataSetChanged();
+    }
 }

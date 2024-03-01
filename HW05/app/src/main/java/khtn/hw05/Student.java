@@ -6,14 +6,17 @@ public class Student {
     private String className;
     private double gpa;
     private int avatar;
+    private int position;
+
 
     // Constructor
-    public Student(String id, String fullNames, String className, double gpa, int avatar) {
+    public Student(String id, String fullNames, String className, double gpa, int avatar, int position) {
         this.id = id;
         this.fullNames = fullNames;
         this.className = className;
         this.gpa = gpa;
         this.avatar = avatar;
+        this.position = position;
     }
 
     // Getter methods
@@ -37,6 +40,8 @@ public class Student {
         return avatar;
     }
 
+    public int getPosition(){return position;}
+
     // Setter methods (if needed)
     public void setId(String id) {
         this.id = id;
@@ -57,4 +62,6 @@ public class Student {
     public void setAvatar(int avatar) {
         this.avatar = avatar;
     }
+
+    public void setPosition(int position){this.position = position;}
 }

@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,19 +14,23 @@ import androidx.fragment.app.Fragment;
 public class DetailFragment extends Fragment implements FragmentCallbacks {
     MainActivity main;
     TextView txtStudentId, txtHoTen, txtLop, txtDTB;
+    Button firstBtn, prevBtn, nextBtn, lastBtn;
+    int studentLength = 4;
+    Student student;
 
     public static DetailFragment newInstance(String strArg1) {
         DetailFragment fragment = new DetailFragment();
         Bundle bundle = new Bundle();
         bundle.putString("arg1", strArg1);
         fragment.setArguments(bundle);
+
         return fragment;
     } // newInstance
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         // Activities containing this fragment must implement interface: MainCallbacks
+        // Activities containing this fragment must implement interface: MainCallbacks
         if (!(getActivity() instanceof MainCallbacks)) {
             throw new IllegalStateException("Activity must implement MainCallbacks");
         }
@@ -40,6 +45,11 @@ public class DetailFragment extends Fragment implements FragmentCallbacks {
         txtLop = (TextView) detail_layout.findViewById(R.id.studentClass);
         txtHoTen = (TextView) detail_layout.findViewById(R.id.studentFullname);
         txtDTB = (TextView) detail_layout.findViewById(R.id.studentGpa);
+        firstBtn = (Button) detail_layout.findViewById(R.id.firstBtn);
+        prevBtn = (Button) detail_layout.findViewById(R.id.prevBtn);
+        nextBtn = (Button) detail_layout.findViewById(R.id.nextBtn);
+        lastBtn = (Button) detail_layout.findViewById(R.id.lastBtn);
+
         // show string argument supplied by constructor (if any!)
         try {
             Bundle arguments = getArguments();
@@ -49,16 +59,66 @@ public class DetailFragment extends Fragment implements FragmentCallbacks {
         }
         // clicking the button changes the time displayed and sends a copy to MainActivity
 
+        firstBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                student = new Student("", "", "", 0, 0, 0);
+                main.onMsgFromFragToMain("DETAIL_FRAG", student);
+            }
+        });
+
+        prevBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                student = new Student("", "", "", 0, 0, student.getPosition() - 1);
+                main.onMsgFromFragToMain("DETAIL_FRAG", student);
+            }
+        });
+
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                student = new Student("", "", "", 0, 0, student.getPosition() + 1);
+                main.onMsgFromFragToMain("DETAIL_FRAG", student);
+            }
+        });
+
+        lastBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                student = new Student("", "", "", 0, 0, studentLength);
+                main.onMsgFromFragToMain("DETAIL_FRAG", student);
+            }
+        });
+
+
         return detail_layout;
     }
 
     @Override
     public void onMsgFromMainToFragment(Student student) {
         // receiving a message from MainActivity (it may happen at any point in time)
+        this.student = student;
         txtStudentId.setText(student.getId());
         txtLop.setText(student.getClassName());
         txtHoTen.setText(student.getFullName());
         txtDTB.setText(String.valueOf(student.getGpa()));
+        if (student.getPosition() == 0) {
+            firstBtn.setEnabled(false);
+            prevBtn.setEnabled(false);
+            nextBtn.setEnabled(true);
+            lastBtn.setEnabled(true);
+        } else if (student.getPosition() == studentLength) {
+            firstBtn.setEnabled(true);
+            prevBtn.setEnabled(true);
+            nextBtn.setEnabled(false);
+            lastBtn.setEnabled(false);
+        } else {
+            firstBtn.setEnabled(true);
+            prevBtn.setEnabled(true);
+            nextBtn.setEnabled(true);
+            lastBtn.setEnabled(true);
+        }
     }
 }
 
