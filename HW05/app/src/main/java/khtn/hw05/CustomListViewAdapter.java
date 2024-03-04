@@ -43,9 +43,9 @@ public class CustomListViewAdapter extends ArrayAdapter<Student> {
 //            row.setBackgroundColor(0xffffffff);
 //        }
         if (position == selectedItemPosition) {
-            row.setBackgroundResource(R.drawable.diagonal_gradient_background);
+            row.setBackgroundColor(0xffffe18f);
         } else {
-            row.setBackgroundResource(android.R.color.transparent);
+            row.setBackgroundColor(0xffffffff);
         }
 
         return (row);
