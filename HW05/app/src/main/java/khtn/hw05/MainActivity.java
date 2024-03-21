@@ -35,7 +35,6 @@ public class MainActivity extends FragmentActivity implements MainCallbacks {
     @Override
     public void onMsgFromFragToMain(String sender, Student student) {
         // show message arriving to MainActivity
-        Toast.makeText(getApplication(), " MAIN GOT>> " + sender + "\n" + student.getId(), Toast.LENGTH_LONG).show();
         if (sender.equals("DETAIL_FRAG")) {
             try {
                 customListFragment.onMsgFromMainToFragment(student);
