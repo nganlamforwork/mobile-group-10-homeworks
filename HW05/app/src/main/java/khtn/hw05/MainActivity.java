@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ public class MainActivity extends FragmentActivity implements MainCallbacks {
     FragmentTransaction ft;
     DetailFragment detailFragment;
     CustomListFragment customListFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class MainActivity extends FragmentActivity implements MainCallbacks {
         detailFragment = DetailFragment.newInstance("");
         ft.replace(R.id.detail_view_fragment, detailFragment);
         ft.commit();
+
     }
 
     // MainCallback implementation (receiving messages coming from Fragments)
@@ -51,4 +54,5 @@ public class MainActivity extends FragmentActivity implements MainCallbacks {
             }
         }
     }
+
 }

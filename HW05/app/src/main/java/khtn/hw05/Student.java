@@ -1,39 +1,34 @@
 package khtn.hw05;
 
 public class Student {
-    private String id;
-    private String fullNames;
-    private String className;
-    private double gpa;
+    private String MaHS;
+    private String TenHS;
+    private String MaLop;
     private int avatar;
     private int position;
 
 
     // Constructor
-    public Student(String id, String fullNames, String className, double gpa, int avatar, int position) {
-        this.id = id;
-        this.fullNames = fullNames;
-        this.className = className;
-        this.gpa = gpa;
+    public Student(String MaHS, String TenHS, String MaLop, int avatar, int position) {
+        this.MaHS = MaHS;
+        this.TenHS = TenHS;
+        this.MaLop = MaLop;
         this.avatar = avatar;
         this.position = position;
     }
 
+
     // Getter methods
-    public String getId() {
-        return id;
+    public String getMaHS() {
+        return MaHS;
     }
 
-    public String getFullName() {
-        return fullNames;
+    public String getTenHS() {
+        return TenHS;
     }
 
-    public String getClassName() {
-        return className;
-    }
-
-    public double getGpa() {
-        return gpa;
+    public String getMaLop() {
+        return MaLop;
     }
 
     public int getAvatar() {
@@ -43,20 +38,16 @@ public class Student {
     public int getPosition(){return position;}
 
     // Setter methods (if needed)
-    public void setId(String id) {
-        this.id = id;
+    public void setMaHS(String MaHS) {
+        this.MaHS = MaHS;
     }
 
-    public void setFullName(String fullNames) {
-        this.fullNames = fullNames;
+    public void setTenHS(String TenHS) {
+        this.TenHS = TenHS;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
-    }
-
-    public void setGpa(double gpa) {
-        this.gpa = gpa;
+    public void setMaLop(String MaLop) {
+        this.MaLop = MaLop;
     }
 
     public void setAvatar(int avatar) {
@@ -64,4 +55,6 @@ public class Student {
     }
 
     public void setPosition(int position){this.position = position;}
+
+
 }

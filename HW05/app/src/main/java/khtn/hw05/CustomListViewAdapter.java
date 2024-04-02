@@ -33,15 +33,9 @@ public class CustomListViewAdapter extends ArrayAdapter<Student> {
         }
         TextView fullnameLabel = (TextView) row.findViewById(R.id.fullname);
         ImageView avatar = (ImageView) row.findViewById(R.id.avatar);
-        fullnameLabel.setText(students.get(position).getId());
+        fullnameLabel.setText(students.get(position).getTenHS());
         avatar.setImageResource(students.get(position).getAvatar());
-//        if (position == selectedItemPosition) {
-//            // Set background color for the selected item
-//            row.setBackgroundColor(0xffffe18f);
-//        } else {
-//            // Set default background color for other items
-//            row.setBackgroundColor(0xffffffff);
-//        }
+
         if (position == selectedItemPosition) {
             row.setBackgroundColor(0xffffe18f);
         } else {

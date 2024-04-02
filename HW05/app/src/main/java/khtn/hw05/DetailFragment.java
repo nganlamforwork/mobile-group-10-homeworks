@@ -44,7 +44,6 @@ public class DetailFragment extends Fragment implements FragmentCallbacks {
         txtStudentId = (TextView) detail_layout.findViewById(R.id.studentId);
         txtLop = (TextView) detail_layout.findViewById(R.id.studentClass);
         txtHoTen = (TextView) detail_layout.findViewById(R.id.studentFullname);
-        txtDTB = (TextView) detail_layout.findViewById(R.id.studentGpa);
         firstBtn = (Button) detail_layout.findViewById(R.id.firstBtn);
         prevBtn = (Button) detail_layout.findViewById(R.id.prevBtn);
         nextBtn = (Button) detail_layout.findViewById(R.id.nextBtn);
@@ -62,7 +61,7 @@ public class DetailFragment extends Fragment implements FragmentCallbacks {
         firstBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                student = new Student("", "", "", 0, 0, 0);
+                student = new Student("", "", "", 0, 0);
                 main.onMsgFromFragToMain("DETAIL_FRAG", student);
             }
         });
@@ -70,7 +69,7 @@ public class DetailFragment extends Fragment implements FragmentCallbacks {
         prevBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                student = new Student("", "", "", 0, 0, student.getPosition() - 1);
+                student = new Student("", "", "",  0, student.getPosition() - 1);
                 main.onMsgFromFragToMain("DETAIL_FRAG", student);
             }
         });
@@ -78,7 +77,7 @@ public class DetailFragment extends Fragment implements FragmentCallbacks {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                student = new Student("", "", "", 0, 0, student.getPosition() + 1);
+                student = new Student("", "", "", 0, student.getPosition() + 1);
                 main.onMsgFromFragToMain("DETAIL_FRAG", student);
             }
         });
@@ -86,7 +85,7 @@ public class DetailFragment extends Fragment implements FragmentCallbacks {
         lastBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                student = new Student("", "", "", 0, 0, studentLength);
+                student = new Student("", "", "", 0, studentLength);
                 main.onMsgFromFragToMain("DETAIL_FRAG", student);
             }
         });
@@ -99,10 +98,9 @@ public class DetailFragment extends Fragment implements FragmentCallbacks {
     public void onMsgFromMainToFragment(Student student) {
         // receiving a message from MainActivity (it may happen at any point in time)
         this.student = student;
-        txtStudentId.setText(student.getId());
-        txtLop.setText(student.getClassName());
-        txtHoTen.setText(student.getFullName());
-        txtDTB.setText(String.valueOf(student.getGpa()));
+        txtStudentId.setText(student.getMaHS());
+        txtLop.setText(student.getMaLop());
+        txtHoTen.setText(student.getTenHS());
         if (student.getPosition() == 0) {
             firstBtn.setEnabled(false);
             prevBtn.setEnabled(false);
