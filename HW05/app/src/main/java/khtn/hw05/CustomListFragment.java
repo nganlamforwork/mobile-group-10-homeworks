@@ -21,17 +21,19 @@ import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
-public class CustomListFragment extends Fragment implements FragmentCallbacks{
+public class CustomListFragment extends Fragment implements FragmentCallbacks {
     // this fragment shows a ListView
     CustomListViewAdapter adapter;
     MainActivity main;
     Context context = null;
     TextView choosenPeople;
     ListView peopleList;
-    String[] ids = {"A1_9829", "A1_1809", "A2_3509", "A2_3100", "A1_1120"};
-    String[] fullnames = {"Lê Vũ Ngân Lam", "Trần Tùng Lâm", "Võ Quốc Bình", "Trần Đỗ Anh Khoa", "Trần Bình Kha"};
-    String[] classId = {"A1", "A1", "A2", "A2", "A1"};
-    Integer[] avatars = {R.drawable.user, R.drawable.user2, R.drawable.user3, R.drawable.user4, R.drawable.user5};
+    String[] ids = {"9829", "1809", "3509", "3100", "1120","1022", "5264", "8546", "4158", "4147"};
+    String[] fullnames = {"Lê Vũ Ngân Lam", "Trần Tùng Lâm", "Võ Quốc Bình", "Trần Đỗ Anh Khoa", "Trần Bình Kha","Lê Văn A", "Trần Thị B", "Võ Văn C", "Trần Văn D", "Trần Thị E"};
+    String[] studentClassIds = {"1", "2", "1", "1", "2","3", "3", "5", "5", "2"};
+    Integer[] avatars = {R.drawable.user, R.drawable.user2, R.drawable.user3, R.drawable.user4, R.drawable.user5,R.drawable.user, R.drawable.user2, R.drawable.user3, R.drawable.user4, R.drawable.user5};
+    String[] classIds = {"1", "2","3","4","5"};
+    String[] classNames = {"A1", "A2","C1","C2","B1"};
     private ArrayList<Student> students = new ArrayList<>();
 
     DatabaseHandler dbHandler;
@@ -57,8 +59,14 @@ public class CustomListFragment extends Fragment implements FragmentCallbacks{
         }
 
         dbHandler = new DatabaseHandler(getActivity());
+
+        for (int i = 0; i < classIds.length; i++) {
+            dbHandler.addClass(new Class(classIds[i], classNames[i]));
+        }
+
+        // Thêm dữ liệu cho bảng Student với khóa ngoại là ID của lớp học
         for (int i = 0; i < ids.length; i++) {
-            Student student = new Student(ids[i], fullnames[i], classId[i] , avatars[i], i);
+            Student student = new Student(ids[i], fullnames[i], studentClassIds[i], avatars[i], i);
             dbHandler.addStudent(student);
         }
 
@@ -84,7 +92,8 @@ public class CustomListFragment extends Fragment implements FragmentCallbacks{
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                choosenPeople.setText("Mã số: " + ids[position]);
+                choosenPeople.setText("Mã số: " + students.get(position).getMaLop() + "_" + students.get(position).getMaHS());
+
                 main.onMsgFromFragToMain("LIST_FRAG", students.get(position));
                 // Update selected item position
                 adapter.setSelectedItemPosition(position);
@@ -100,16 +109,17 @@ public class CustomListFragment extends Fragment implements FragmentCallbacks{
 
     private void createStudentObjects() {
         for (int i = 0; i < ids.length; i++) {
-                Student student = new Student(ids[i], fullnames[i], classId[i], avatars[i], i);
-                students.add(student);
+            Student student = new Student(ids[i], fullnames[i], studentClassIds[i], avatars[i], i);
+            students.add(student);
         }
         Log.d("StudentList", students.toString());
     }
 
     @Override
     public void onMsgFromMainToFragment(Student student) {
-        choosenPeople.setText("Mã số: " + ids[student.getPosition()]);
-        main.onMsgFromFragToMain("LIST_FRAG", students.get(student.getPosition()));
+        Student currentStudent = dbHandler.getStudentByPosition(student.getPosition());
+        choosenPeople.setText("Mã số: " +  currentStudent.getMaLop() + "_" + currentStudent.getMaHS());
+        main.onMsgFromFragToMain("LIST_FRAG", currentStudent);
         // Update selected item position
         adapter.setSelectedItemPosition(student.getPosition());
         adapter.notifyDataSetChanged();

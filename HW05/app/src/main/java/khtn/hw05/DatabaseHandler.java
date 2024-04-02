@@ -4,14 +4,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DatabaseHandler extends SQLiteOpenHelper{
-    private static final String DATABASE_NAME = "HCM-US";
+public class DatabaseHandler extends SQLiteOpenHelper {
+    private static final String DATABASE_NAME = "HCM-US-1";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "STUDENTS";
     private static final String TABLE_CLASSNAME = "CLASS";
@@ -67,35 +67,70 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         db.close();
     }
 
-    public Student getStudent(int studentId) {
+    public Student getStudentByPosition(int studentId) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_NAME, null, KEY_MAHS + " = ?", new String[] { String.valueOf(studentId) },null, null, null);
-        if(cursor != null)
+        Cursor cursor = db.query(
+                TABLE_NAME, null, KEY_POSITION + " = ?",
+                new String[]{String.valueOf(studentId)}, null, null, null);
+        if (cursor != null)
             cursor.moveToFirst();
-        return new Student(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4));
+
+        String querySelectClassById = "SELECT " + KEY_TENLOP + " FROM " + TABLE_CLASSNAME + " WHERE " + KEY_MALOP + " = ?";
+
+        Cursor cursorClass = db.rawQuery(querySelectClassById, new String[]{cursor.getString(2)});
+        cursorClass.moveToFirst();
+        String tenLop = "";
+        if (!cursorClass.isAfterLast()) {
+            tenLop = cursorClass.getString(0);
+        }
+        cursorClass.close();
+        return new Student(
+                cursor.getString(0),
+                cursor.getString(1),
+                tenLop,
+                cursor.getInt(3),
+                cursor.getInt(4)
+        );
     }
 
     public Class getClass(int classId) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_CLASSNAME, null, KEY_MALOP + " = ?", new String[] { String.valueOf(classId) },null, null, null);
-        if(cursor != null)
+        Cursor cursor = db.query(TABLE_CLASSNAME, null, KEY_MALOP + " = ?", new String[]{String.valueOf(classId)}, null, null, null);
+        if (cursor != null)
             cursor.moveToFirst();
+
         return new Class(cursor.getString(0), cursor.getString(1));
     }
 
 
     public List<Student> getAllStudents() {
-        List<Student>  studentList = new ArrayList<>();
+        List<Student> studentList = new ArrayList<>();
         String query = "SELECT * FROM " + TABLE_NAME;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
 
-        while(cursor.isAfterLast() == false) {
-            Student student = new Student(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getInt(4));
+        while (cursor.isAfterLast() == false) {
+            String querySelectClassById = "SELECT " + KEY_TENLOP + " FROM " + TABLE_CLASSNAME + " WHERE " + KEY_MALOP + " = ?";
+
+            Cursor cursorClass = db.rawQuery(querySelectClassById, new String[]{cursor.getString(cursor.getColumnIndex(KEY_MALOP))});
+            cursorClass.moveToFirst();
+            String tenLop = "";
+            if (!cursorClass.isAfterLast()) {
+                tenLop = cursorClass.getString(0);
+            }
+            cursorClass.close();
+
+            Student student = new Student(
+                    cursor.getString(0),
+                    cursor.getString(1),
+                    tenLop,                         // Class name from CLASS TABLE
+                    cursor.getInt(3),
+                    cursor.getInt(4)
+            );
             studentList.add(student);
             cursor.moveToNext();
         }
@@ -112,19 +147,19 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         values.put(KEY_AVATAR, student.getAvatar());
         values.put(KEY_POSITION, student.getPosition());
 
-        db.update(TABLE_NAME, values, KEY_MAHS + " = ?", new String[] { String.valueOf(student.getMaHS()) });
+        db.update(TABLE_NAME, values, KEY_MAHS + " = ?", new String[]{String.valueOf(student.getMaHS())});
         db.close();
     }
 
     public void deleteStudent(int studentId) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME, KEY_MAHS + " = ?", new String[] { String.valueOf(studentId) });
+        db.delete(TABLE_NAME, KEY_MAHS + " = ?", new String[]{String.valueOf(studentId)});
         db.close();
     }
 
     public void deleteClass(int classId) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_CLASSNAME, KEY_MALOP + " = ?", new String[] { String.valueOf(classId) });
+        db.delete(TABLE_CLASSNAME, KEY_MALOP + " = ?", new String[]{String.valueOf(classId)});
         db.close();
     }
 }
