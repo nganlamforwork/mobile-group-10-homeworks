@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TuoitreMainActivity">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSuckhoeTuoitre"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:text="SỨC KHỎE"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCongngheTuoitre"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="CÔNG NGHỆ"
+        android:layout_below="@id/btnSuckhoeTuoitre"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnKinhdoanhTuoitre"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="KINH DOANH"
+        android:layout_below="@id/btnCongngheTuoitre"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnVanhoaTuoitre"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="VĂN HÓA"
+        android:layout_below="@id/btnKinhdoanhTuoitre"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnThugianTuoitre"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="THƯ GIÃN"
+        android:layout_below="@id/btnVanhoaTuoitre"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPhapluatTuoitre"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="PHÁP LUẬT"
+        android:layout_below="@id/btnThugianTuoitre"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDulichTuoitre"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="DU LỊCH"
+        android:layout_below="@id/btnPhapluatTuoitre"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnKhoahocTuoitre"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="KHOA HỌC"
+        android:layout_below="@id/btnDulichTuoitre"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnThethaoTuoitre"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="THỂ THAO"
+        android:layout_below="@id/btnKhoahocTuoitre"/>
+
+</RelativeLayout>

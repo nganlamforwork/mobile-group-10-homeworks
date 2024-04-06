@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ThanhNienMainActivity">
+
+    <TextView
+        android:id="@+id/capttion_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CHANNELS IN THANH NIÊN"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnThoiSu"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:text="THỜI SỰ"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnTheGioi"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="THẾ GIỚI"
+        android:layout_below="@id/btnThoiSu"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnVanHoa"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="VĂN HÓA"
+        android:layout_below="@id/btnTheGioi"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGiaiTri"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="GIẢI TRÍ"
+        android:layout_below="@id/btnVanHoa"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnTheThao"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="THỂ THAO"
+        android:layout_below="@id/btnGiaiTri"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDoiSong"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="ĐỜI SỐNG"
+        android:layout_below="@id/btnTheThao"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnTaiChinhKinhDoanh"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="TÀI CHÍNH - KINH DOANH"
+        android:layout_below="@id/btnDoiSong"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGioiTre"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="GIỚI TRẺ"
+        android:layout_below="@id/btnTaiChinhKinhDoanh"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGiaoDuc"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="GIÁO DỤC"
+        android:layout_below="@id/btnGioiTre"/>
+
+</RelativeLayout>

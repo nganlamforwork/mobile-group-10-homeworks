@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+    
+    <TextView
+        android:id="@+id/capttion_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEWS APP"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="250dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_thanh_nien"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/capttion_app"
+        android:layout_marginTop="30dp"
+        app:cardBackgroundColor="#EFC9C9"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="THANH NIÊN"
+            android:layout_gravity="center"
+            android:textColor="@color/black"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_vnexpress"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/card_thanh_nien"
+        android:layout_marginTop="15dp"
+        app:cardBackgroundColor="#EFC9C9"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VNEXPRESS"
+            android:layout_gravity="center"
+            android:textColor="@color/black"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_tuoi_tre"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/card_vnexpress"
+        android:layout_marginTop="15dp"
+        app:cardBackgroundColor="#EFC9C9"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TUỔI TRẺ"
+            android:layout_gravity="center"
+            android:textColor="@color/black"/>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
