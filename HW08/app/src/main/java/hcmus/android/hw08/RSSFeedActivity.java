@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -31,12 +32,15 @@ public class RSSFeedActivity extends ListActivity {
     RSSParser rssParser = new RSSParser();
     List<RSSItem> rssItems = new ArrayList<>();
     private String TAG_TITLE = "title", TAG_LINK = "link", TAG_DATE = "pubDate";
-
+    private TextView textCaption;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rssfeed);
         String rss_link = getIntent().getStringExtra("rssLink");
+        textCaption = findViewById(R.id.caption_app);
+        textCaption.setText("ITEMS IN CHANNELS " + getIntent().getStringExtra("category").toUpperCase() + " - " + getIntent().getStringExtra("news").toUpperCase());
+
         new LoadRSSFeedItems().execute(rss_link);
         ListView lv = getListView();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -47,14 +51,12 @@ public class RSSFeedActivity extends ListActivity {
     }
 
     public void showNiceDialogBox(RSSItem selectedStoryItem, Context context) {
-
         String title = selectedStoryItem.getTitle();
         String description = selectedStoryItem.getDescription();
         if (title.toLowerCase().equals(description.toLowerCase())) {
             description = "";
         }
         try {
-            //CAUTION: sometimes TITLE and DESCRIPTION include HTML markers
             final Uri storyLink = Uri.parse(selectedStoryItem.getLink());
             AlertDialog.Builder myBuilder = new AlertDialog.Builder(this);
             myBuilder
@@ -64,10 +66,7 @@ public class RSSFeedActivity extends ListActivity {
                     .setNegativeButton("More", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-
-                            // Assuming R.id.page_url is in the custom layout of the dialog
                             String pageUrl = selectedStoryItem.getLink();
-
                             Intent intent = new Intent(RSSFeedActivity.this, WebActivity.class);
                             intent.putExtra("url", pageUrl);
                             startActivity(intent);

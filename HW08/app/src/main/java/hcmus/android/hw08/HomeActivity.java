@@ -29,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
                     startActivity(new Intent(HomeActivity.this, ThanhNienMainActivity.class));
                 }
             });
-          /*  card_vnexpress.setOnClickListener(new View.OnClickListener() {
+            card_vnexpress.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     startActivity(new Intent(HomeActivity.this, VNexpressMainActivity.class));
@@ -38,15 +38,10 @@ public class HomeActivity extends AppCompatActivity {
             card_tuoitre.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(HomeActivity.this, TuoitreMainActivity.class));
+                    startActivity(new Intent(HomeActivity.this, TuoiTreMainActivity.class));
                 }
-            })*/;
+            });
         }
-       /* else{
-            Intent intent = new Intent(HomeActivity.this, WebActivity.class);
-            intent.putExtra("url", getLastUrl);
-            startActivity(intent);
-        }*/
     }
 
     @Override

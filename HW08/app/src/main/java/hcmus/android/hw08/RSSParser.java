@@ -28,9 +28,7 @@ public class RSSParser {
     private static String TAG_ITEM = "item";
     private static String TAG_DATE = "pubDate";
     private static String TAG_DESCRIPTION = "description";
-
     public RSSParser() {
-
     }
 
     public List<RSSItem> getRSSFeedItems(String rss_url) {

@@ -4,7 +4,6 @@ public class RSSItem {
     public String title;
     public String link;
     public String pubdate;
-
     public String description;
 
     public RSSItem(){

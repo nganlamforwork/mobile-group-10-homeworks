@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ThanhNienMainActivity">
+    tools:context=".VNexpressMainActivity">
 
     <TextView
         android:id="@+id/capttion_app"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CHANNELS IN THANH NIÊN"
+        android:text="CHANNELS IN VNEXPRESS"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -19,67 +19,67 @@
         />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnThoiSu"
+        android:id="@+id/btnThoiSuExpress"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
         android:text="THỜI SỰ"/>
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnTheGioi"
+        android:id="@+id/btnTheGioiExpress"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="THẾ GIỚI"
-        android:layout_below="@id/btnThoiSu"/>
+        android:layout_below="@id/btnThoiSuExpress"/>
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnVanHoa"
+        android:id="@+id/btnDuLichExpress"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="VĂN HÓA"
-        android:layout_below="@id/btnTheGioi"/>
+        android:text="DU LỊCH"
+        android:layout_below="@id/btnTheGioiExpress"/>
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnGiaiTri"
+        android:id="@+id/btnGiaiTriExpress"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="GIẢI TRÍ"
-        android:layout_below="@id/btnVanHoa"/>
+        android:layout_below="@id/btnDuLichExpress"/>
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnTheThao"
+        android:id="@+id/btnTheThaoExpress"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="THỂ THAO"
-        android:layout_below="@id/btnGiaiTri"/>
+        android:layout_below="@id/btnGiaiTriExpress"/>
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnDoiSong"
+        android:id="@+id/btnDoiSongExpress"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="ĐỜI SỐNG"
-        android:layout_below="@id/btnTheThao"/>
+        android:layout_below="@id/btnTheThaoExpress"/>
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnTaiChinhKinhDoanh"
+        android:id="@+id/btnPhapLuatExpress"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="TÀI CHÍNH - KINH DOANH"
-        android:layout_below="@id/btnDoiSong"/>
+        android:text="PHÁP LUẬT"
+        android:layout_below="@id/btnDoiSongExpress"/>
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnGioiTre"
+        android:id="@+id/btnStartupExpress"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="GIỚI TRẺ"
-        android:layout_below="@id/btnTaiChinhKinhDoanh"/>
+        android:text="STARTUP"
+        android:layout_below="@id/btnPhapLuatExpress"/>
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnGiaoDuc"
+        android:id="@+id/btnGiaoDucExpress"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="GIÁO DỤC"
-        android:layout_below="@id/btnGioiTre"/>
+        android:layout_below="@id/btnStartupExpress"/>
 
 </RelativeLayout>

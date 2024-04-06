@@ -48,34 +48,40 @@ public class ThanhNienMainActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(this, RSSFeedActivity.class);
+        String category = "";
+
         if (view.getId() == R.id.btnThoiSu) {
             intent.putExtra("rssLink", rssLinks.get(0));
-            startActivity(intent);
+            category = "Thời sự";
         } else if (view.getId() == R.id.btnTheGioi) {
             intent.putExtra("rssLink", rssLinks.get(1));
-            startActivity(intent);
+            category = "Thế giới";
         } else if (view.getId() == R.id.btnVanHoa) {
             intent.putExtra("rssLink", rssLinks.get(2));
-            startActivity(intent);
+            category = "Văn hóa";
         } else if (view.getId() == R.id.btnGiaiTri) {
             intent.putExtra("rssLink", rssLinks.get(3));
-            startActivity(intent);
+            category = "Giải trí";
         } else if (view.getId() == R.id.btnTheThao) {
             intent.putExtra("rssLink", rssLinks.get(4));
-            startActivity(intent);
+            category = "Thể thao";
         } else if (view.getId() == R.id.btnDoiSong) {
             intent.putExtra("rssLink", rssLinks.get(5));
-            startActivity(intent);
+            category = "Đời sống";
         } else if (view.getId() == R.id.btnTaiChinhKinhDoanh) {
             intent.putExtra("rssLink", rssLinks.get(6));
-            startActivity(intent);
+            category = "Tài chính kinh doanh";
         } else if (view.getId() == R.id.btnGioiTre) {
             intent.putExtra("rssLink", rssLinks.get(7));
-            startActivity(intent);
+            category = "Giới trẻ";
         } else if (view.getId() == R.id.btnGiaoDuc) {
             intent.putExtra("rssLink", rssLinks.get(8));
-            startActivity(intent);
+            category = "Giáo dục";
         }
+
+        intent.putExtra("category", category);
+        intent.putExtra("news", "Thanh niên");
+        startActivity(intent);
     }
 
     @Override
