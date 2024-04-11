@@ -49,12 +49,13 @@ public class MyService5Async extends Service {
         super.onDestroy();
         Log.e("<<MyService5Async-onDestroy>>", "I am dead-5-Async");
         isRunning = false;
+
     }//onDestroy
 
     public class ComputeFibonacciRecursivelyTask extends AsyncTask<Integer, Integer, Void> {
         @Override
         protected Void doInBackground(Integer... params) {
-            for (int i = params[0]; i < params[1]; i++) {
+            for (int i = params[0]; i < params[1] && isRunning; i++) {
                 Integer fibn = fibonacci(i);
                 publishProgress(i, fibn);
             }

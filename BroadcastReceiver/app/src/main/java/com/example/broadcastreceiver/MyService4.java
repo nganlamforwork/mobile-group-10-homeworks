@@ -22,7 +22,7 @@ public class MyService4 extends Service {
         Toast.makeText(this, "MyService4 Created", Toast.LENGTH_LONG).show();
         Log.e("MyService4", "onCreate");
         boolIsServiceCreated = true;
-        player = MediaPlayer.create(getApplicationContext(), R.raw.good_bad_ugly);
+        player = MediaPlayer.create(getApplicationContext(), R.raw.music);
     }
 
     @Override
